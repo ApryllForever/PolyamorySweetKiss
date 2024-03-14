@@ -78,7 +78,7 @@ namespace HugsAndKisses
                     if (!npcMarriageKiss && !npcRelatedHug && !playerSpouseKiss && !npcRoommateHug)
                         continue;
 
-                    float distance = Vector2.Distance(npc1.position, npc2.position);
+                    float distance = Vector2.Distance(npc1.Position, npc2.Position);
                     if (
                         distance < Config.MaxDistanceToKiss
                         && !npc1.isSleeping.Value
@@ -91,11 +91,11 @@ namespace HugsAndKisses
                         lastKissed[npc1.Name] = elapsedSeconds;
                         lastKissed[npc2.Name] = elapsedSeconds;
 
-                        Vector2 npc1pos = npc1.position;
-                        Vector2 npc2pos = npc2.position;
-                        int npc1face = npc1.facingDirection;
-                        int npc2face = npc1.facingDirection;
-                        Vector2 midpoint = new Vector2((npc1.position.X + npc2.position.X) / 2, (npc1.position.Y + npc2.position.Y) / 2);
+                        Vector2 npc1pos = npc1.Position;
+                        Vector2 npc2pos = npc2.Position;
+                        int npc1face = npc1.FacingDirection;
+                        int npc2face = npc1.FacingDirection;
+                        Vector2 midpoint = new Vector2((npc1.Position.X + npc2.Position.X) / 2, (npc1.Position.Y + npc2.Position.Y) / 2);
 
                         PerformEmbrace(npc1, midpoint, npc2.Name);
                         PerformEmbrace(npc2, midpoint, npc1.Name);
@@ -104,12 +104,12 @@ namespace HugsAndKisses
                         {
                             if (Config.CustomKissSound.Length > 0 && kissEffect != null)
                             {
-                                float playerDistance = 1f / ((Vector2.Distance(midpoint, Game1.player.position) / 256) + 1);
+                                float playerDistance = 1f / ((Vector2.Distance(midpoint, Game1.player.Position) / 256) + 1);
                                 kissEffect.Play(playerDistance * Game1.options.soundVolumeLevel, 0, 0);
                             }
                             else
                             {
-                                Game1.currentLocation.playSound("dwop", NetAudio.SoundContext.NPC);
+                                Game1.currentLocation.playSound("dwop",null,null, StardewValley.Audio.SoundContext.NPC);
                             }
                             Misc.ShowHeart(npc1);
                             Misc.ShowHeart(npc2);
@@ -119,7 +119,7 @@ namespace HugsAndKisses
                         {
                             if (Config.CustomHugSound.Length > 0 && hugEffect != null)
                             {
-                                float playerDistance = 1f / ((Vector2.Distance(midpoint, Game1.player.position) / 256) + 1);
+                                float playerDistance = 1f / ((Vector2.Distance(midpoint, Game1.player.Position) / 256) + 1);
                                 hugEffect.Play(playerDistance * Game1.options.soundVolumeLevel, 0, 0);
                             }
                             Misc.ShowSmiley(npc1);
@@ -145,7 +145,7 @@ namespace HugsAndKisses
 
         public static void PerformEmbrace(NPC npc1, NPC npc2)
         {
-            Vector2 midpoint = new Vector2((npc1.position.X + npc2.position.X) / 2, (npc1.position.Y + npc2.position.Y) / 2);
+            Vector2 midpoint = new Vector2((npc1.Position.X + npc2.Position.X) / 2, (npc1.Position.Y + npc2.Position.Y) / 2);
             PerformEmbrace(npc1, midpoint, npc2.Name);
             PerformEmbrace(npc2, midpoint, npc1.Name);
         }
@@ -166,14 +166,14 @@ namespace HugsAndKisses
             }
             
 
-            bool right = npc.position.X < midpoint.X;
-            if(npc.position == midpoint)
+            bool right = npc.Position.X < midpoint.X;
+            if(npc.Position == midpoint)
             {
                 right = String.Compare(npc.Name, partner) < 0;
             }
-            else if(npc.position.X == midpoint.X)
+            else if(npc.Position.X == midpoint.X)
             {
-                right = npc.position.Y > midpoint.Y;
+                right = npc.Position.Y > midpoint.Y;
             }
 
             bool flip = (facingRight && !right) || (!facingRight && right);
@@ -262,7 +262,7 @@ namespace HugsAndKisses
                     }
                     else
                     {
-                        npc.currentLocation.playSound("dwop", NetAudio.SoundContext.NPC);
+                        npc.currentLocation.playSound("dwop", null, null, StardewValley.Audio.SoundContext.NPC);
                     }
                 }
                 player.exhausted.Value = false;

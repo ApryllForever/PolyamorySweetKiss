@@ -205,12 +205,30 @@ namespace HugsAndKisses
             {
                 //Game1.characterData.
 
-                Dictionary<string,string> relations = kvp.Value.FriendsAndFamily;
+                Dictionary<string,string> relative = kvp.Value.FriendsAndFamily;
 
-                //string[] relations = kvp.Value.Split('/')[9].Split(' ');
-                if (relations.Length > 0)
+                // Game1.getCharacterFromName(relative.TryGetValue());
+
+                foreach (KeyValuePair<string, string> npcrelative in relative)
                 {
-                    ModEntry.relationships.Add(kvp.Key, new Dictionary<string, string>());
+                     //NPC questionpc =  Game1.getCharacterFromName(relative[npcrelative.Key]);
+                    //if(questionpc != null) 
+                    // {
+                    //}
+                    
+                    //string[] relations = npcrelative.Value.
+
+
+                    ModEntry.relationships.Add(kvp.Key, relative);
+
+
+                }
+
+                /*
+                //KeyValuePair<string, string>[] relations = relative.ToArray(); //Was tired doing this, I have no clue what the hell this means       //kvp.Value.Split('/')[9].Split(' ');
+                //if (relations.Length > 0)
+                {
+                    //ModEntry.relationships.Add(kvp.Key, new Dictionary<string, string>());
                     for (int i = 0; i < relations.Length; i += 2)
                     {
                         try
@@ -222,28 +240,37 @@ namespace HugsAndKisses
 
                         }
                     }
-                }
+                } */
             }
+         
         }
 
         public static string[] relativeRoles = new string[]
         {
-            "son",
-            "daughter",
-            "sister",
-            "brother",
             "dad",
             "mom",
             "father",
             "mother",
+            "son",
+            "daughter",
+            "sister",
+            "brother",
+            "sibling",
+            "step",
+            "stepsibling",
+            "strep sibling",
+            "step brother",
+            "step sister",
+            "stepmother",
+            "step mother",
+            "stepfather",
+            "step father",
+            "step parent",
+            "step child",
             "aunt",
             "uncle",
-            "cousin",
             "nephew",
             "niece",
-            "offspring",
-            "parent",
-            "relative",
             "grandmother",
             "grandfather",
             "grandparent",
@@ -251,17 +278,21 @@ namespace HugsAndKisses
             "grandson",
             "grandchild",
             "grandniece",
-            "grandnephew"
+            "grandnephew",
+            "offspring",
+            "parent",
+            "relative",
         };
         
         public static string[] spouseRoles = new string[]
         {
-            "husband",
+            
             "wife",
             "partner",
             "girlfriend",
+            "lover",
             "boyfriend",
-            "lover"
+            "husband",
         };
 
         public static bool AreNPCsMarried(string npc1, string npc2)
