@@ -218,7 +218,7 @@ namespace HugsAndKisses
                     
                     //string[] relations = npcrelative.Value.
 
-
+                    if(!ModEntry.relationships.ContainsKey(kvp.Key) )
                     ModEntry.relationships.Add(kvp.Key, relative);
 
 

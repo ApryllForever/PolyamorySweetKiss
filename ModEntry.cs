@@ -39,6 +39,7 @@ namespace HugsAndKisses
             helper.Events.GameLoop.OneSecondUpdateTicked += GameLoop_OneSecondUpdateTicked;
             helper.Events.GameLoop.SaveLoaded += GameLoop_SaveLoaded;
 
+
             Misc.Initialize(Monitor, Config, helper);
             Kissing.Initialize(Monitor, Config, helper);
             NPCPatches.Initialize(Monitor, Config, helper);
@@ -48,10 +49,12 @@ namespace HugsAndKisses
 
             // Event patches
 
-            harmony.Patch(
-               original: AccessTools.Method(typeof(Event), nameof(Event.DefaultCommands.PlaySound)),
-               prefix: new HarmonyMethod(typeof(EventPatches), nameof(EventPatches.Event_command_playSound_Prefix))
-            );
+            //FIX This makes the kiss sound in the wedding. It's just not working right now. Null Method. 
+
+           // harmony.Patch(
+              // original: AccessTools.Method(typeof(Event), nameof(Event.DefaultCommands.PlaySound)),
+               //prefix: new HarmonyMethod(typeof(EventPatches), nameof(EventPatches.Event_command_playSound_Prefix))
+            //);
 
             // NPC patches
 
@@ -59,6 +62,11 @@ namespace HugsAndKisses
                original: AccessTools.Method(typeof(NPC), nameof(NPC.checkAction)),
                prefix: new HarmonyMethod(typeof(NPCPatches), nameof(NPCPatches.NPC_checkAction_Prefix))
             );
+
+            harmony.Patch(
+             original: AccessTools.Method(typeof(NPC), nameof(NPC.checkAction)),
+             prefix: new HarmonyMethod(typeof(NPCPatches), nameof(NPCPatches.NPC_checkAction_Prefix))
+          );
 
         }
 

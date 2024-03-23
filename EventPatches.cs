@@ -15,11 +15,11 @@ namespace HugsAndKisses
             Monitor = monitor;
             Helper = helper;
         }
-        public static bool Event_command_playSound_Prefix(Event __instance, string[] split)
+        public static bool Event_command_playSound_Prefix(Event @event, string[] args, EventContext context, Event __instance)
         {
             try
             {
-                if (split[1] == "dwop" && __instance.isWedding && ModEntry.Config.CustomKissSound.Length > 0 && Kissing.kissEffect != null)
+                if (args[1] == "dwop" && __instance.isWedding && ModEntry.Config.CustomKissSound.Length > 0 && Kissing.kissEffect != null)
                 {
                     Kissing.kissEffect.Play();
                     int num = __instance.CurrentCommand;

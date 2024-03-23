@@ -26,6 +26,33 @@ namespace HugsAndKisses
                 if (!Config.EnableMod || __instance.IsInvisible || __instance.isSleeping.Value || !who.canMove || who.checkForQuestComplete(__instance, -1, -1, who.ActiveObject, null, -1, 5) || (who.pantsItem.Value?.ParentSheetIndex == 15 && (__instance.Name.Equals("Lewis") || __instance.Name.Equals("Marnie"))) || (__instance.Name.Equals("Krobus") && who.hasQuest("28")) || !who.IsLocalPlayer)
                     return true;
 
+
+
+
+                if (who.friendshipData.ContainsKey(__instance.Name) && who.friendshipData[__instance.Name].Points >= 3125 && who.mailReceived.Add("CF_Spouse"))
+                {
+                    Monitor.Log($"getting starfruit");
+                    __instance.CurrentDialogue.Push(new Dialogue(__instance, Game1.player.isRoommate(who.spouse) ? "Strings\\StringsFromCSFiles:Krobus_Stardrop" : "Strings\\StringsFromCSFiles:NPC.cs.4001", false));
+                    StardewValley.Object stardrop = ItemRegistry.Create<StardewValley.Object>("(O)434", 1, 0, false);
+                    stardrop.CanBeSetDown = false;
+                    stardrop.CanBeGrabbed = false;
+                    Game1.player.addItemByMenuIfNecessary(stardrop, null);
+                    __instance.shouldSayMarriageDialogue.Value = false;
+                    __instance.currentMarriageDialogue.Clear();
+                    __result = true;
+                    return false;
+                }
+
+
+
+
+
+
+
+
+
+
+
                 if (
                     (who.friendshipData.ContainsKey(__instance.Name) && (who.friendshipData[__instance.Name].IsMarried() || who.friendshipData[__instance.Name].IsEngaged())) ||
                     ((__instance.datable.Value || Config.AllowNonDateableNPCsToHugAndKiss) && who.friendshipData.ContainsKey(__instance.Name) && !who.friendshipData[__instance.Name].IsMarried() && !who.friendshipData[__instance.Name].IsEngaged() && ((who.friendshipData[__instance.Name].IsDating() && Config.DatingKisses) || (who.getFriendshipHeartLevelForNPC(__instance.Name) >= Config.HeartsForFriendship && Config.FriendHugs)))
