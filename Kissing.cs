@@ -196,6 +196,13 @@ namespace HugsAndKisses
 
         public static void PlayerNPCKiss(Farmer player, NPC npc)
         {
+            // If an NPC is marked as a child, we want to return immediately.
+            if (npc.Age == NPC.child)
+            {
+                ModEntry.SMonitor.Log($"Cannot kiss roommate {npc.Name} as they are marked as a child.");
+                return;
+            }
+            
             string name = npc.Name;
             int spouseFrame = Misc.GetKissingFrame(name);
             bool facingRight = Misc.GetFacingRight(name);
