@@ -5,7 +5,7 @@ using StardewValley;
 using System;
 using System.IO;
 
-namespace HugsAndKisses
+namespace PolyamorySweetKiss
 {
     /// <summary>The mod entry point.</summary>
     public partial class ModEntry

@@ -1,8 +1,12 @@
-﻿using StardewModdingAPI;
+﻿using Microsoft.Xna.Framework;
+using Netcode;
+using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Audio;
+using StardewValley.Quests;
 using System;
 
-namespace HugsAndKisses
+namespace PolyamorySweetKiss
 {
     public static class NPCPatches
     {
@@ -10,7 +14,6 @@ namespace HugsAndKisses
         private static ModConfig Config;
         private static IModHelper Helper;
 
-        // call this method from your Entry class
         public static void Initialize(IMonitor monitor, ModConfig config, IModHelper helper)
         {
             Monitor = monitor;
@@ -20,10 +23,12 @@ namespace HugsAndKisses
 
         public static bool NPC_checkAction_Prefix(ref NPC __instance, ref Farmer who, GameLocation l, ref bool __result)
         {
+            NPC fubar = new NPC();
+            fubar = __instance;
 
             try
             {
-                if (!Config.EnableMod || __instance.IsInvisible || __instance.isSleeping.Value || !who.canMove || who.checkForQuestComplete(__instance, -1, -1, who.ActiveObject, null, -1, 5) || (who.pantsItem.Value?.ParentSheetIndex == 15 && (__instance.Name.Equals("Lewis") || __instance.Name.Equals("Marnie"))) || (__instance.Name.Equals("Krobus") && who.hasQuest("28")) || !who.IsLocalPlayer)
+                if (!Config.EnableMod || __instance.IsInvisible || __instance.isSleeping.Value || !who.canMove || who.NotifyQuests((Quest quest) => quest.OnNpcSocialized(fubar)) || (who.pantsItem.Value?.ParentSheetIndex == 15 && (__instance.Name.Equals("Lewis") || __instance.Name.Equals("Marnie"))) || (__instance.Name.Equals("Krobus") && who.hasQuest("28")) || !who.IsLocalPlayer)
                     return true;
 
 
@@ -42,16 +47,6 @@ namespace HugsAndKisses
                     __result = true;
                     return false;
                 }
-
-
-
-
-
-
-
-
-
-
 
                 if (
                     (who.friendshipData.ContainsKey(__instance.Name) && (who.friendshipData[__instance.Name].IsMarried() || who.friendshipData[__instance.Name].IsEngaged())) ||
@@ -95,5 +90,56 @@ namespace HugsAndKisses
             }
             return true;
         }
+
+        public static bool Farmer_checkAction_Prefix(Farmer who, GameLocation location, ref bool __result, ref NetEvent1Field<long,NetLong> ___kissFarmerEvent)
+        {
+            if (Game1.CurrentEvent != null)
+            {
+                return true;
+            }
+
+            if (who.isRidingHorse()||who.hidden.Value||who.CurrentItem != null||!who.CanMove)
+            {
+                return true;
+            }
+
+            long? playerSpouseID = who.team.GetSpouse(who.UniqueMultiplayerID);
+
+            if (playerSpouseID.HasValue && playerSpouseID == who.UniqueMultiplayerID)
+            {
+                return true;
+            }
+
+            try
+            {
+
+
+                if ( who.CanMove &&!who.isMoving() && !Game1.player.isMoving() && Utility.IsHorizontalDirection(Game1.player.getGeneralDirectionTowards(who.getStandingPosition(), -10, opposite: false, useTileCalculations: false)))
+                {
+                    who.Halt();
+                    who.faceGeneralDirection(who.getStandingPosition(), 0, opposite: false, useTileCalculations: false);
+                    ___kissFarmerEvent.Fire(who.UniqueMultiplayerID);
+                   // Game1.Multiplayer.broadcastSprites(Game1.currentLocation, new TemporaryAnimatedSprite("LooseSprites\\Cursors", new Microsoft.Xna.Framework.Rectangle(211, 428, 7, 6), 2000f, 1, 0, base.Tile * 64f + new Vector2(16f, -64f), flicker: false, flipped: false, 1f, 0f, Color.White, 4f, 0f, 0f, 0f)
+                   // {
+                   //     motion = new Vector2(0f, -0.5f),
+                   //     alphaFade = 0.01f
+                   // });
+                   // Game1.player.playNearbySoundAll("dwop", null, SoundContext.NPC);
+                    __result = true;
+                    return false;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Monitor.Log($"Failed in {nameof(Farmer_checkAction_Prefix)}:\n{ex}", LogLevel.Error);
+
+                return true;
+            }
+            return true;
+        }
+
+      
     }
 }

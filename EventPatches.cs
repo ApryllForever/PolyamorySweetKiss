@@ -2,14 +2,14 @@
 using StardewValley;
 using System;
 
-namespace HugsAndKisses
+namespace PolyamorySweetKiss
 {
     public static class EventPatches
     {
         private static IMonitor Monitor;
         private static IModHelper Helper;
 
-        // call this method from your Entry class
+
         public static void Initialize(IMonitor monitor, ModConfig config, IModHelper helper)
         {
             Monitor = monitor;

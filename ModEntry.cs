@@ -4,7 +4,7 @@ using StardewValley;
 using System;
 using System.Collections.Generic;
 
-namespace HugsAndKisses
+namespace PolyamorySweetKiss
 {
     /// <summary>The mod entry point.</summary>
     public partial class ModEntry : Mod
@@ -43,6 +43,7 @@ namespace HugsAndKisses
             Misc.Initialize(Monitor, Config, helper);
             Kissing.Initialize(Monitor, Config, helper);
             NPCPatches.Initialize(Monitor, Config, helper);
+            EventPatches.Initialize(Monitor, Config, helper);
 
             var harmony = new Harmony(ModManifest.UniqueID);
 
@@ -63,12 +64,22 @@ namespace HugsAndKisses
                prefix: new HarmonyMethod(typeof(NPCPatches), nameof(NPCPatches.NPC_checkAction_Prefix))
             );
 
+           // harmony.Patch(
+           //  original: AccessTools.Method(typeof(NPC), nameof(NPC.checkAction)),
+            // prefix: new HarmonyMethod(typeof(NPCPatches), nameof(NPCPatches.NPC_checkAction_Prefix))
+         // );
+
             harmony.Patch(
-             original: AccessTools.Method(typeof(NPC), nameof(NPC.checkAction)),
-             prefix: new HarmonyMethod(typeof(NPCPatches), nameof(NPCPatches.NPC_checkAction_Prefix))
-          );
+            original: AccessTools.DeclaredMethod(typeof(Farmer), nameof(Farmer.checkAction)),
+            prefix: new HarmonyMethod(typeof(NPCPatches), nameof(NPCPatches.Farmer_checkAction_Prefix))
+         );
+
 
         }
+
+
+
+
 
         public override object GetApi()
         {

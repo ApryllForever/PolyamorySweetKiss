@@ -1,5 +1,5 @@
 ﻿
-namespace HugsAndKisses
+namespace PolyamorySweetKiss
 {
     public class ModConfig
     {
@@ -21,7 +21,7 @@ namespace HugsAndKisses
         public bool AllowPlayerSpousesToKiss { get; set; } = true;
         public bool AllowNPCRelativesToHug { get; set; } = true;
         public bool AllowNPCSpousesToKiss { get; set; } = true;
-        public bool AllowRelativesToKiss { get; set; } = false;
+        public bool AllowRelativesToKiss { get; set; } = true;
         public bool AllowNonDateableNPCsToHugAndKiss { get; set; } = false;
         public bool UseNonDateableNPCsKissFrames { get; set; } = false;
     }

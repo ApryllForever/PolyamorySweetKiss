@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HugsAndKisses
+namespace PolyamorySweetKiss
 {
     /// <summary>The mod entry point.</summary>
     public class Kissing

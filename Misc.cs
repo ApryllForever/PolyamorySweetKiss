@@ -5,7 +5,7 @@ using StardewValley.GameData.Characters;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace HugsAndKisses
+namespace PolyamorySweetKiss
 {
     /// <summary>The mod entry point.</summary>
     public class Misc
@@ -207,21 +207,24 @@ namespace HugsAndKisses
 
                 Dictionary<string,string> relative = kvp.Value.FriendsAndFamily;
 
-                // Game1.getCharacterFromName(relative.TryGetValue());
-
-                foreach (KeyValuePair<string, string> npcrelative in relative)
+                if (relative != null)
                 {
-                     //NPC questionpc =  Game1.getCharacterFromName(relative[npcrelative.Key]);
-                    //if(questionpc != null) 
-                    // {
-                    //}
-                    
-                    //string[] relations = npcrelative.Value.
+                    // Game1.getCharacterFromName(relative.TryGetValue());
 
-                    if(!ModEntry.relationships.ContainsKey(kvp.Key) )
-                    ModEntry.relationships.Add(kvp.Key, relative);
+                    foreach (KeyValuePair<string, string> npcrelative in relative)
+                    {
+                        //NPC questionpc =  Game1.getCharacterFromName(relative[npcrelative.Key]);
+                        //if(questionpc != null) 
+                        // {
+                        //}
+
+                        //string[] relations = npcrelative.Value.
+
+                        if (!ModEntry.relationships.ContainsKey(kvp.Key))
+                            ModEntry.relationships.Add(kvp.Key, relative);
 
 
+                    }
                 }
 
                 /*
