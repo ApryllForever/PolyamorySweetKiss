@@ -1,0 +1,20 @@
+{
+  "config.enable-mod.name": "Mod Enabled",
+  "config.roommate-kisses.name": "Roommate kisses",
+  "config.min-hearts-for-marriage-kiss.name": "Min Hearts For Marriage Kiss",
+  "config.hearts-for-friendship.name": "Hearts For Friendship",
+  "config.unlimited-daily-kisses.name": "Unlimited Kisses",
+  "config.dating-kisses.name": "Dating Kisses",
+  "config.friend-hugs.name": "Friend Hugs",
+  "config.custom-kiss-sound.name": "Custom Kiss Sound",
+  "config.custom-hug-sound.name": "Custom Hug Sound",
+  "config.custom-kiss-frames.name": "Custom Kiss Frames",
+  "config.allow-player-spouses-to-kiss.name": "Multiple Spouses Kiss",
+  "config.allow-npc-relatives-to-hug.name": "Allow Relatives To Hug",
+  "config.allow-npc-spouses-to-kiss.name": "Allow NPC Spouses To Kiss",
+  "config.allow-relatives-to-kiss.name": "Allow Relatives To Kiss",
+  "config.allow-non-dateable-npcs-to-hug-and-kiss.name": "Allow Non-datable",
+  "config.spouse-kiss-chance.name": "NPC Kiss Chance",
+  "config.max-distance-to-kiss.name": "Max NPC Kiss Distance",
+  "config.min-spouse-kiss-interval-seconds.name": "Min Spouse Kiss Interval (s)"
+}

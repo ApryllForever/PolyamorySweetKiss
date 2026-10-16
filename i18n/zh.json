@@ -1,0 +1,20 @@
+{
+  "config.enable-mod.name": "启用模组",
+  "config.roommate-kisses.name": "室友亲吻",
+  "config.min-hearts-for-marriage-kiss.name": "结婚亲吻所需最低好感度",
+  "config.hearts-for-friendship.name": "友情亲吻所需好感度",
+  "config.unlimited-daily-kisses.name": "无限亲吻",
+  "config.dating-kisses.name": "约会亲吻",
+  "config.friend-hugs.name": "朋友拥抱",
+  "config.custom-kiss-sound.name": "自定义亲吻音效",
+  "config.custom-hug-sound.name": "自定义拥抱音效",
+  "config.custom-kiss-frames.name": "自定义亲吻帧",
+  "config.allow-player-spouses-to-kiss.name": "多位配偶接吻",
+  "config.allow-npc-relatives-to-hug.name": "允许亲属拥抱",
+  "config.allow-npc-spouses-to-kiss.name": "允许NPC配偶接吻",
+  "config.allow-relatives-to-kiss.name": "允许亲属接吻",
+  "config.allow-non-dateable-npcs-to-hug-and-kiss.name": "允许不可约会的角色",
+  "config.spouse-kiss-chance.name": "NPC亲吻概率",
+  "config.max-distance-to-kiss.name": "NPC亲吻最大距离",
+  "config.min-spouse-kiss-interval-seconds.name": "配偶亲吻最小间隔（秒）"
+}
