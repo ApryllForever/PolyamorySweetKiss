@@ -72,49 +72,49 @@ namespace PolyamorySweetKiss
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Mod Enabled",
+                    name: () => Helper.Translation.Get("config.enable-mod.name"),
                     getValue: () => Config.EnableMod,
                     setValue: value => Config.EnableMod = value
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Roommate kisses",
+                    name: () => Helper.Translation.Get("config.roommate-kisses.name"),
                     getValue: () => Config.RoommateKisses,
                     setValue: value => Config.RoommateKisses = value
                 );
                 configMenu.AddNumberOption(
                     mod: ModManifest,
-                    name: () => "Min Hearts For Marriage Kiss",
+                    name: () => Helper.Translation.Get("config.min-hearts-for-marriage-kiss.name"),
                     getValue: () => Config.MinHeartsForMarriageKiss,
                     setValue: value => Config.MinHeartsForMarriageKiss = value
                 );
                 configMenu.AddNumberOption(
                     mod: ModManifest,
-                    name: () => "Hearts For Friendship",
+                    name: () => Helper.Translation.Get("config.hearts-for-friendship.name"),
                     getValue: () => Config.HeartsForFriendship,
                     setValue: value => Config.HeartsForFriendship = value
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Unlimited Kisses",
+                    name: () => Helper.Translation.Get("config.unlimited-daily-kisses.name"),
                     getValue: () => Config.UnlimitedDailyKisses,
                     setValue: value => Config.UnlimitedDailyKisses = value
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Dating Kisses",
+                    name: () => Helper.Translation.Get("config.dating-kisses.name"),
                     getValue: () => Config.DatingKisses,
                     setValue: value => Config.DatingKisses = value
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Friend Hugs",
+                    name: () => Helper.Translation.Get("config.friend-hugs.name"),
                     getValue: () => Config.FriendHugs,
                     setValue: value => Config.FriendHugs = value
                 );
                 configMenu.AddNumberOption(
                     mod: ModManifest,
-                    name: () => "NPC Kiss Chance",
+                    name: () => Helper.Translation.Get("config.spouse-kiss-chance.name"),
                     getValue: () => (int)Config.SpouseKissChance0to1*100,
                     setValue: value => Config.SpouseKissChance0to1 = value / 100f,
                     min: 0,
@@ -122,61 +122,61 @@ namespace PolyamorySweetKiss
                 );
                 configMenu.AddTextOption(
                     mod: ModManifest,
-                    name: () => "Custom Kiss Sound",
+                    name: () => Helper.Translation.Get("config.custom-kiss-sound.name"),
                     getValue: () => Config.CustomKissSound,
                     setValue: value => Config.CustomKissSound = value
                 );
                 configMenu.AddTextOption(
                     mod: ModManifest,
-                    name: () => "Custom Hug Sound",
+                    name: () => Helper.Translation.Get("config.custom-hug-sound.name"),
                     getValue: () => Config.CustomHugSound,
                     setValue: value => Config.CustomHugSound = value
                 );
                 configMenu.AddTextOption(
                     mod: ModManifest,
-                    name: () => "Custom Kiss Frames",
+                    name: () => Helper.Translation.Get("config.custom-kiss-frames.name"),
                     getValue: () => Config.CustomKissFrames,
                     setValue: value => Config.CustomKissFrames = value
                 );
                 configMenu.AddNumberOption(
                     mod: ModManifest,
-                    name: () => "Max NPC Kiss Distance",
+                    name: () => Helper.Translation.Get("config.max-distance-to-kiss.name"),
                     getValue: () => (int)Config.MaxDistanceToKiss,
                     setValue: value => Config.MaxDistanceToKiss = value
                 );
                 configMenu.AddNumberOption(
                     mod: ModManifest,
-                    name: () => "Min Spouse Kiss Interval (s)",
+                    name: () => Helper.Translation.Get("config.min-spouse-kiss-interval-seconds.name"),
                     getValue: () => (int)Config.MinSpouseKissIntervalSeconds,
                     setValue: value => Config.MinSpouseKissIntervalSeconds = value
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Multiple Spouses Kiss",
+                    name: () => Helper.Translation.Get("config.allow-player-spouses-to-kiss.name"),
                     getValue: () => Config.AllowPlayerSpousesToKiss,
                     setValue: value => Config.AllowPlayerSpousesToKiss = value
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Allow Relatives To Hug",
+                    name: () => Helper.Translation.Get("config.allow-npc-relatives-to-hug.name"),
                     getValue: () => Config.AllowNPCRelativesToHug,
                     setValue: value => Config.AllowNPCRelativesToHug = value
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Allow NPC Spouses To Kiss",
+                    name: () => Helper.Translation.Get("config.allow-npc-spouses-to-kiss.name"),
                     getValue: () => Config.AllowNPCSpousesToKiss,
                     setValue: value => Config.AllowNPCSpousesToKiss = value
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Allow Relatives To Kiss",
+                    name: () => Helper.Translation.Get("config.allow-relatives-to-kiss.name"),
                     getValue: () => Config.AllowRelativesToKiss,
                     setValue: value => Config.AllowRelativesToKiss = value
                 );
                 configMenu.AddBoolOption(
                     mod: ModManifest,
-                    name: () => "Allow Non-datable",
+                    name: () => Helper.Translation.Get("config.allow-non-dateable-npcs-to-hug-and-kiss.name"),
                     getValue: () => Config.AllowNonDateableNPCsToHugAndKiss,
                     setValue: value => Config.AllowNonDateableNPCsToHugAndKiss = value
                 );
